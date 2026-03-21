@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: black;
+        overflow: hidden;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+        border: 4px solid gray;
+        border-radius: 20%;
+        padding: 70px;
+        background-color: white;
+        font-size: larger;
+      }
+
+      input {
+        font-size: large;
+      }
+
+      #div_content {
+        display: flex;
+        flex-direction: column;
+        gap: 2;
+      }
+
+      span {
+        color: red;
+        font-weight: bold;
+      }
+
+      button {
+        font-size: x-large;
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <label for="input_password">Insira a senha</label> <br />
+      <input type="text" id="input_password" /> <br />
+      <br />
+      <button onclick="show()">Confirmar</button> <br />
+      <br />
+      <div id="div_content">
+        <p>Senha informada: <span id="span_password"></span></p>
+        <p>Seu amigo chocolate é: <span id="span_name"></span></p>
+        <p>
+          A preferência dele(a) é
+          <span id="span_prefference"></span>
+        </p>
+      </div>
+    </main>
+  </body>
+</html>
+
+<script>
+  const people = [
+    {
+      password: "qvae",
+      name: "Janaina",
+      prefference: "Meio amargo crocante",
+    },
+    {
+      password: "kxuv",
+      name: "Jussara",
+      prefference: "Chocolate branco",
+    },
+    {
+      password: "gonm",
+      name: "Isabelly",
+      prefference: "Meio amargo crocante",
+    },
+    {
+      password: "idgd",
+      name: "Eliana",
+      prefference: "Chocolate branco",
+    },
+  ];
+
+  function show() {
+    const password = input_password.value;
+
+    const person = people.find((p) => {
+      return p.password == password;
+    });
+
+    if (!person) {
+      div_content.innerHTML = "Senha incorreta";
+    } else {
+      span_password.innerHTML = person.password;
+      span_name.innerHTML = person.name;
+      span_prefference.innerHTML = person.prefference;
+    }
+  }
+</script>
